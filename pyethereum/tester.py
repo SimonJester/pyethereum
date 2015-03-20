@@ -61,6 +61,10 @@ class state():
 
     def contract(self, code, sender=k0, endowment=0):
         evm = serpent.compile(code)
+        contract_from_evm(self, evm, sender, endowment)
+        return o
+
+    def contract_from_evm(self, evm, sender=k0, endowment=0):
         o = self.evm(evm, sender, endowment)
         assert len(self.block.get_code(o)), "Contract code empty"
         return o
